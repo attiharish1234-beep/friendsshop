@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,14 +72,14 @@
 <body>
 
 <div class="header">
-    <img src="/static/images/logo.png">
+    <img src="{% static'images/logo.png'%}"alt="Logo">
     <h2>Your Trusted Footwear Store</h2>
 </div>
 
 <div class="products">
 
     <div class="product">
-        <img src="/static/images/slippers.jpg">
+        <img src="{% static'images/slippers.jpg'%}">
         <h2>Comfort Slippers</h2>
         <p class="price">₹299</p>
 
@@ -88,7 +89,7 @@
     </div>
 
     <div class="product">
-        <img src="/static/images/sandals.jpg">
+        <img src="{% static'images/sandals.jpg'%}">
         <h2>Sports Sandals</h2>
         <p class="price">₹499</p>
 
