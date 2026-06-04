@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Product</title>
+    <style>
+        body{
+            font-family:Arial;
+            background:#f5f5f5;
+            text-align:center;
+        }
+
+        .box{
+            width:500px;
+            margin:30px auto;
+            background:white;
+            padding:20px;
+            border-radius:10px;
+            box-shadow:0 0 10px #ccc;
+        }
+
+        img{
+            width:250px;
+            border-radius:10px;
+        }
+
+        select,input,textarea{
+            width:90%;
+            padding:10px;
+            margin:10px;
+        }
+
+        button{
+            background:#F97316;
+            color:white;
+            border:none;
+            padding:12px 25px;
+            border-radius:5px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+
+<form method="POST" action="/save-order/">
+    {% csrf_token %}
+
+    <img src="/static/images/slippers.jpg">
+
+    <h2>Comfort Slippers</h2>
+
+    <h3>Select Size</h3>
+
+    <select name="size">
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+    </select>
+
+    <input type="text" name="full_name" placeholder="Full Name" required>
+
+    <textarea name="address" placeholder="Address" required></textarea>
+
+    <input type="text" name="phone" placeholder="Phone Number" required>
+
+    <br><br>
+
+    <button type="submit">Continue</button>
+
+</form>
+</div>
+
+</body>
+</html>

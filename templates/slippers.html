@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comfort Slippers</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .product-box {
+            width: 500px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px lightgray;
+            text-align: center;
+        }
+
+        img {
+            width: 300px;
+            border-radius: 10px;
+        }
+
+        .price {
+            color: green;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 90%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="product-box">
+
+    <img src="{% static 'image/slippers.jpg' %}" alt="Comfort Slippers">
+
+    <h1>Comfort Slippers</h1>
+
+    <p class="price">₹499</p>
+
+    <h3>Delivery Address</h3>
+
+    <input type="text" placeholder="Full Name"><br><br>
+
+    <textarea rows="4" placeholder="Enter Delivery Address"></textarea><br><br>
+
+    <input type="text" placeholder="Mobile Number"><br><br>
+
+    <a href="/payment/">
+        <button>Buy Now</button>
+    </a>
+
+</div>
+
+</body>
+</html>

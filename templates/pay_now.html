@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment</title>
+</head>
+<body>
+
+<h2>Complete Your Payment</h2>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"
+    data-key="{{ key }}"
+    data-amount="{{ amount }}"
+    data-currency="INR"
+    data-order_id="{{ payment.id }}"
+    data-buttontext="Pay Now"
+    data-name="My Shop"
+    data-theme.color="#3399cc">
+</script>
+
+</body>
+</html>
