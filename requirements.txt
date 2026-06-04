@@ -14,7 +14,6 @@ pyinstaller==6.19.0
 pyinstaller-hooks-contrib==2026.2
 pypiwin32==223
 pyttsx3==2.99
-pywin32==311
 pywin32-ctypes==0.2.3
 setuptools==82.0.0
 sounddevice==0.5.5
