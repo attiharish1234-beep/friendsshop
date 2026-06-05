@@ -7,5 +7,5 @@ class Order(models.Model):
     address = models.TextField()
     phone = models.CharField(max_length=15)
 
-    def __str__(self):
-        return self.full_name
+    payment_status = models.CharField(max_length=20, default="Pending")
+    txn_id = models.CharField(max_length=100, null=True, blank=True)

@@ -44,15 +44,17 @@
     <a href="https://razorpay.me/@attiharish"
  target="_blank">
     <button>Pay Now</button>
-</a>
-
-    <p>Please complete the payment and then click the button below.</p>
-
-    <a href="/success/">
-        <button>Payment Done</button>
     </a>
 
-</div>
+    <hr>
 
-</body>
-</html>
+    <p>After payment, enter Transaction ID:</p>
+
+    <form action="/success/" method="POST">
+        {% csrf_token %}
+        <input type="text" name="txn_id" placeholder="Enter Transaction ID" required>
+        <br><br>
+        <button type="submit">Confirm Order</button>
+    </form>
+
+</div>

@@ -8,7 +8,8 @@ def save_order(request):
             size=request.POST.get("size"),
             full_name=request.POST.get("full_name"),
             address=request.POST.get("address"),
-            phone=request.POST.get("phone")
+            phone=request.POST.get("phone"),
+            payment_status="pending"
         )
         return redirect('/payment/')
 
