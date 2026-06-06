@@ -1,24 +1,22 @@
 from django.shortcuts import render, redirect
 from .models import Order
 
+# 1. def save_order(request):
+    if request.method == "GET":
+        product_name = request.GET.get("product")
 
-# 1. Save Order (Product details page)
-def save_order(request):
-    if request.method == "POST":
-        order = Order.objects.create(
-            product="Comfort Slippers",
-            size=request.POST.get("size"),
-            full_name=request.POST.get("full_name"),
-            address=request.POST.get("address"),
-            phone=request.POST.get("phone"),
+        Order.objects.create(
+            product=product_name,
+            size="Free Size",
+            full_name="",
+            address="",
+            phone="",
             payment_status="Pending"
         )
 
-        # redirect to payment page after order creation
         return redirect('/payment/')
 
     return redirect('/product/')
-
 
 # 2. Payment Page
 def payment(request):
