@@ -10,6 +10,18 @@ def product(request):
     return render(request, "product.html")
 
 
+def slippers(request):
+    return render(request, "slippers.html")
+
+
+def sandals(request):
+    return render(request, "sandals.html")
+
+
+def footwear(request):
+    return render(request, "footwear.html")
+
+
 def save_order(request):
     if request.method == "POST":
         Order.objects.create(
