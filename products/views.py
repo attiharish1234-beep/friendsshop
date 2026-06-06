@@ -1,33 +1,19 @@
-from django.shortcuts import render, redirect
-from .models import Order
-
-
-def home(request):
-    return render(request, "home.html")
-
-
 def product(request):
-    return render(request, "product.html")
+    product = request.GET.get("product")
 
+    if product == "sandals":
+        image = "images/sandals.jpg"
+        title = "Sports Sandals"
 
-def save_order(request):
-    if request.method == "POST":
-        Order.objects.create(
-            product="Comfort Slippers",
-            size=request.POST.get("size"),
-            full_name=request.POST.get("full_name"),
-            address=request.POST.get("address"),
-            phone=request.POST.get("phone"),
-            payment_status="Pending"
-        )
-        return redirect('/payment/')
+    elif product == "footwear":
+        image = "images/footwear.jpg"
+        title = "Daily Wear Footwear"
 
-    return redirect('/product/')
+    else:
+        image = "images/slippers.jpg"
+        title = "Comfort Slippers"
 
-
-def payment(request):
-    return render(request, "payment.html")
-
-
-def success(request):
-    return render(request, "success.html")
+    return render(request, "product.html", {
+        "image": image,
+        "title": title
+    })
