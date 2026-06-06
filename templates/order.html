@@ -1,0 +1,30 @@
+{% load static %}
+
+<h1>Order Page</h1>
+
+{% if product == 'sports' %}
+    <img src="{% static 'images/sports_sandal.jpg' %}">
+{% elif product == 'daily' %}
+    <img src="{% static 'images/daily_wear.jpg' %}">
+{% elif product == 'slippers' %}
+    <img src="{% static 'images/slippers.jpg' %}">
+{% endif %}
+
+<br><br>
+
+<select>
+    <option>6</option>
+    <option>7</option>
+    <option>8</option>
+    <option>9</option>
+    <option>10</option>
+</select>
+
+<br><br>
+
+<input type="text" placeholder="Full Name"><br><br>
+<textarea placeholder="Address"></textarea><br><br>
+<input type="text" placeholder="PIN Code"><br><br>
+<input type="text" placeholder="Phone Number"><br><br>
+
+<button>Continue</button>
