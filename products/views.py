@@ -6,17 +6,12 @@ def home(request):
 def product(request):
     product = request.GET.get("product")
 
-def save_order(request):
-    return render(request, 'payment.html')
-
     if product == "sandals":
         image = "images/sandals.jpg"
         title = "Sports Sandals"
-
     elif product == "footwear":
         image = "images/footwear.jpg"
         title = "Daily Wear Footwear"
-
     else:
         image = "images/slippers.jpg"
         title = "Comfort Slippers"
@@ -25,3 +20,12 @@ def save_order(request):
         "image": image,
         "title": title
     })
+
+def save_order(request):
+    return render(request, 'payment.html')
+
+def payment(request):
+    return render(request, 'payment.html')
+
+def success(request):
+    return render(request, 'success.html')
