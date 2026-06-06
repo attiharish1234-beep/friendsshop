@@ -3,7 +3,7 @@ from .models import Order
 
 
 def save_order(request):
-    if request.method == "GET":
+    if request.method == "POST":
         order = Order.objects.create(
             product="Comfort Slippers",
             size=request.POST.get("size"),
