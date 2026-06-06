@@ -1,16 +1,15 @@
 from django.shortcuts import render, redirect
 from .models import Order
 
-# 1. def save_order(request):
-    if request.method == "GET":
-        product_name = request.GET.get("product")
 
-        Order.objects.create(
-            product=product_name,
-            size="Free Size",
-            full_name="",
-            address="",
-            phone="",
+def save_order(request):
+    if request.method == "GET":
+        order = Order.objects.create(
+            product="Comfort Slippers",
+            size=request.POST.get("size"),
+            full_name=request.POST.get("full_name"),
+            address=request.POST.get("address"),
+            phone=request.POST.get("phone"),
             payment_status="Pending"
         )
 
@@ -18,17 +17,15 @@ from .models import Order
 
     return redirect('/product/')
 
-# 2. Payment Page
+
 def payment(request):
     return render(request, "payment.html")
 
 
-# 3. Success Page (after transaction ID or payment)
 def success(request):
     if request.method == "POST":
         txn_id = request.POST.get("txn_id")
 
-        # update last order (simple working version)
         order = Order.objects.last()
         order.txn_id = txn_id
         order.payment_status = "Paid"
@@ -39,6 +36,5 @@ def success(request):
     return redirect('/')
 
 
-# 4. Home / fallback (optional)
 def home(request):
     return render(request, "home.html")
