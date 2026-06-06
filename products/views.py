@@ -2,12 +2,18 @@ from django.shortcuts import render, redirect
 from .models import Order
 
 
+def home(request):
+    return render(request, "home.html")
+
+
+def product(request):
+    return render(request, "product.html")
+
+
 def save_order(request):
     if request.method == "POST":
-        order = Order.objects.create(
+        Order.objects.create(
             product="Comfort Slippers",
-            product="daily wear footwear",
-            product="sport sandle"
             size=request.POST.get("size"),
             full_name=request.POST.get("full_name"),
             address=request.POST.get("address"),
@@ -29,14 +35,12 @@ def success(request):
         txn_id = request.POST.get("txn_id")
 
         order = Order.objects.last()
-        order.txn_id = txn_id
-        order.payment_status = "Paid"
-        order.save()
 
-        return render(request, "success.html", {"txn_id": txn_id})
+        if order:
+            order.txn_id = txn_id
+            order.payment_status = "Paid"
+            order.save()
+
+        return render(request, "success.html")
 
     return redirect('/')
-
-
-def home(request):
-    return render(request, "home.html")
