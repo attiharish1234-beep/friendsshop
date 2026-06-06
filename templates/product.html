@@ -3,19 +3,21 @@
 <html>
 <head>
     <title>Order Product</title>
+
     <style>
         body{
-            font-family: Arial;
+            font-family: Arial, sans-serif;
             background:#f5f5f5;
-            text-align:center;
+            margin:0;
         }
 
         .box{
             width:500px;
-            margin:30px auto;
+            margin:40px auto;
             background:white;
-            padding:20px;
+            padding:25px;
             border-radius:10px;
+            text-align:center;
             box-shadow:0 0 10px #ccc;
         }
 
@@ -24,19 +26,32 @@
             border-radius:10px;
         }
 
-        select,input,textarea{
+        h2{
+            margin-top:15px;
+        }
+
+        select,
+        input,
+        textarea{
             width:90%;
             padding:10px;
-            margin:10px;
+            margin:10px 0;
+            border:1px solid #ccc;
+            border-radius:5px;
         }
 
         button{
-            background:#F97316;
+            background:#ff6600;
             color:white;
             border:none;
             padding:12px 25px;
             border-radius:5px;
             cursor:pointer;
+            font-size:16px;
+        }
+
+        button:hover{
+            background:#e65c00;
         }
     </style>
 </head>
@@ -44,34 +59,37 @@
 
 <div class="box">
 
-<form method="POST" action="/save-order/">
-    {% csrf_token %}
+    <form method="POST" action="/save-order/">
+        {% csrf_token %}
 
-    <img src="{{ image }}">
+        <img src="{% static 'images/slippers.jpg' %}" alt="Comfort Slippers">
 
-    <h2>{{ product }}</h2>
+        <h2>Comfort Slippers</h2>
 
-    <h3>Select Size</h3>
+        <p><b>Price: ₹299</b></p>
 
-    <select name="size">
-        <option>6</option>
-        <option>7</option>
-        <option>8</option>
-        <option>9</option>
-        <option>10</option>
-    </select>
+        <h3>Select Size</h3>
 
-    <input type="text" name="full_name" placeholder="Full Name" required>
+        <select name="size" required>
+            <option value="">Select Size</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
 
-    <textarea name="address" placeholder="Address" required></textarea>
+        <input type="text" name="full_name" placeholder="Full Name" required>
 
-    <input type="text" name="phone" placeholder="Phone Number" required>
+        <textarea name="address" placeholder="Delivery Address" required></textarea>
 
-    <br><br>
+        <input type="text" name="phone" placeholder="Mobile Number" required>
 
-    <button type="submit">Continue</button>
+        <br><br>
 
-</form>
+        <button type="submit">Continue To Payment</button>
+
+    </form>
 
 </div>
 
