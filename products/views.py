@@ -6,6 +6,8 @@ def save_order(request):
     if request.method == "POST":
         order = Order.objects.create(
             product="Comfort Slippers",
+            product="daily wear footwear",
+            product="sport sandle"
             size=request.POST.get("size"),
             full_name=request.POST.get("full_name"),
             address=request.POST.get("address"),
