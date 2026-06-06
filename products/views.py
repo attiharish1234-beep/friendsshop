@@ -23,13 +23,13 @@ def footwear(request):
 
 
 def save_order(request):
-    if request.method == "POST":
+    if request.method == "GET":
         Order.objects.create(
             product="Comfort Slippers",
-            size=request.POST.get("size"),
-            full_name=request.POST.get("full_name"),
-            address=request.POST.get("address"),
-            phone=request.POST.get("phone"),
+            size=request.GET.get("size"),
+            full_name=request.GET.get("full_name"),
+            address=request.GET.get("address"),
+            phone=request.GET.get("phone"),
             payment_status="Pending"
         )
 
@@ -43,8 +43,8 @@ def payment(request):
 
 
 def success(request):
-    if request.method == "POST":
-        txn_id = request.POST.get("txn_id")
+    if request.method == "GET":
+        txn_id = request.GET.get("txn_id")
 
         order = Order.objects.last()
 
