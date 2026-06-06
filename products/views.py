@@ -6,6 +6,9 @@ def home(request):
 def product(request):
     product = request.GET.get("product")
 
+def save_order(request):
+    return render(request, 'payment.html')
+
     if product == "sandals":
         image = "images/sandals.jpg"
         title = "Sports Sandals"
