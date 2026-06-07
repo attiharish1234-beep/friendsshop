@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FriendsShop</title>
 
     <style>
@@ -9,6 +10,29 @@
             margin:0;
             font-family:Arial, sans-serif;
             background:#f5f5f5;
+        }
+
+        /* Splash Screen */
+        #splash{
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100vh;
+            background:white;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            z-index:9999;
+        }
+
+        #splash img{
+            width:250px;
+            max-width:80%;
+        }
+
+        #main-content{
+            display:none;
         }
 
         .header{
@@ -66,51 +90,64 @@
         }
     </style>
 </head>
+
 <body>
 
-<div class="header">
-    <img src="{% static 'images/logo.png' %}" alt="FriendsShop Logo">
-    <h2>Your Trusted Footwear Store</h2>
-</div>
+    <!-- Splash Screen -->
+    <div id="splash">
+        <img src="{% static 'images/logo.png' %}" alt="FriendsShop Logo">
+    </div>
 
-<div class="products">
+    <!-- Main Website -->
+    <div id="main-content">
 
-    <div class="product">
-        <img src="{% static 'images/slippers.jpg' %}" alt="Comfort Slippers">
-        <h2>Comfort Slippers</h2>
-        <p class="price">₹299</p>
+        <div class="header">
+            <img src="{% static 'images/logo.png' %}" alt="FriendsShop Logo">
+            <h2>Your Trusted Footwear Store</h2>
+        </div>
 
-        <a href="/product/?product=slippers">
+        <div class="products">
 
-    <button>Buy Now</button>
-</a>
+            <div class="product">
+                <img src="{% static 'images/slippers.jpg' %}" alt="Comfort Slippers">
+                <h2>Comfort Slippers</h2>
+                <p class="price">₹299</p>
+
+                <a href="/product/?product=slippers">
+                    <button>Buy Now</button>
+                </a>
+            </div>
+
+            <div class="product">
+                <img src="{% static 'images/sandals.jpg' %}" alt="Sports Sandals">
+                <h2>Sports Sandals</h2>
+                <p class="price">₹499</p>
+
+                <a href="/product/?product=sandals">
+                    <button>Buy Now</button>
+                </a>
+            </div>
+
+            <div class="product">
+                <img src="{% static 'images/footwear.jpg' %}" alt="Daily Wear Footwear">
+                <h2>Daily Wear Footwear</h2>
+                <p class="price">₹399</p>
+
+                <a href="/product/?product=footwear">
+                    <button>Buy Now</button>
+                </a>
+            </div>
+
+        </div>
 
     </div>
 
-    <div class="product">
-        <img src="{% static 'images/sandals.jpg' %}" alt="Sports Sandals">
-        <h2>Sports Sandals</h2>
-        <p class="price">₹499</p>
-
-  <a href="/product/?product=sandals">
-    <button>Buy Now</button>
-</a>
-
-    </div>
-
-    <div class="product">
-        <img src="{% static 'images/footwear.jpg' %}" alt="Daily Wear Footwear">
-        <h2>Daily Wear Footwear</h2>
-        <p class="price">₹399</p>
-
-  <a href="/product/?product=footwear">
-
-    <button>Buy Now</button>
- </a>   
-
- </div>
-
-</div>
+    <script>
+        setTimeout(function() {
+            document.getElementById("splash").style.display = "none";
+            document.getElementById("main-content").style.display = "block";
+        }, 4000);
+    </script>
 
 </body>
 </html>
