@@ -55,9 +55,10 @@ WSGI_APPLICATION = 'friendsshop.wsgi.application'
 import dj_database_url
 
 DATABASES = {
-    'default': dj_database_url.parse("postgresql://friendsshop_db_user:8woXtbwB5QcIPw7VySX39u7euAxchRPY@dpg-d8ikb148aovs738d8qr0-a/friendsshop_db")
+    'default': dj_database_url.parse(
+        "postgresql://friendsshop_db_user:8woXtbwB5QcIPw7VySX39u7euAxchRPY@dpg-d8ikb148aovs738d8qr0-a.singapore-postgres.render.com/friendsshop_db"
+    )
 }
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
