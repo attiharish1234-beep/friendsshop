@@ -53,8 +53,37 @@
             background:#1565c0;
         }
     </style>
+    .search-box {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    max-width: 400px;
+    margin: auto;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    padding: 8px 12px;
+    background: white;
+}
+
+.search-wrapper input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+}
 </head>
 <body>
+
+<div class="search-box">
+    <div class="search-wrapper">
+        <input type="text" id="searchInput" placeholder="Search products...">
+    </div>
+</div>
 
 <div class="container">
 
