@@ -59,7 +59,7 @@
 
     <p>₹{{ product.price }}</p>
 
-    <form action="/save-order/" method="post">
+    <form action="{% url'save_order'%}"method="post"
         {% csrf_token %}
 
         <select name="size" required>
