@@ -1,31 +1,25 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from .models import Product
 
+# HOME PAGE - SHOW ALL PRODUCTS
 def home(request):
-    return render(request, 'home.html')
+    products = Product.objects.all()
+    return render(request, 'home.html', {'products': products})
 
-def product(request):
-    product = request.GET.get("product")
 
-    if product == "sandals":
-        image = "images/sandals.jpg"
-        title = "Sports Sandals"
-    elif product == "footwear":
-        image = "images/footwear.jpg"
-        title = "Daily Wear Footwear"
-    else:
-        image = "images/slippers.jpg"
-        title = "Comfort Slippers"
+# PRODUCT DETAIL PAGE
+def product(request, id):
+    product = get_object_or_404(Product, id=id)
+    return render(request, "product.html", {'product': product})
 
-    return render(request, "product.html", {
-        "image": image,
-        "title": title
-    })
 
 def save_order(request):
     return render(request, 'payment.html')
 
+
 def payment(request):
     return render(request, 'payment.html')
+
 
 def success(request):
     return render(request, 'success.html')

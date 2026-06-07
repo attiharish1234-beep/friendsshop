@@ -46,22 +46,24 @@
             width:180px;
         }
 
+        /* PRODUCTS SCROLL */
         .products{
             display:flex;
-            justify-content:center;
-            gap:30px;
-            flex-wrap:nowrap;
+            gap:20px;
             overflow-x:auto;
             padding:40px;
+            scroll-snap-type:x mandatory;
         }
 
         .product{
             background:white;
-            width:200px;
+            min-width:200px;
+            flex-shrink:0;
             padding:20px;
             border-radius:10px;
             text-align:center;
             box-shadow:0px 0px 10px #ccc;
+            scroll-snap-align:start;
         }
 
         .product img{
@@ -107,37 +109,24 @@
             <h2>Your Trusted Footwear Store</h2>
         </div>
 
+        <!-- PRODUCTS FROM ADMIN -->
         <div class="products">
 
+            {% for product in products %}
             <div class="product">
-                <img src="{% static 'images/slippers.jpg' %}" alt="Comfort Slippers">
-                <h2>Comfort Slippers</h2>
-                <p class="price">₹299</p>
 
-                <a href="/product/?product=slippers">
+                <!-- IMAGE FROM ADMIN -->
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+
+                <h2>{{ product.name }}</h2>
+                <p class="price">₹{{ product.price }}</p>
+
+                <a href="/product/?product={{ product.id }}">
                     <button>Buy Now</button>
                 </a>
+
             </div>
-
-            <div class="product">
-                <img src="{% static 'images/sandals.jpg' %}" alt="Sports Sandals">
-                <h2>Sports Sandals</h2>
-                <p class="price">₹499</p>
-
-                <a href="/product/?product=sandals">
-                    <button>Buy Now</button>
-                </a>
-            </div>
-
-            <div class="product">
-                <img src="{% static 'images/footwear.jpg' %}" alt="Daily Wear Footwear">
-                <h2>Daily Wear Footwear</h2>
-                <p class="price">₹399</p>
-
-                <a href="/product/?product=footwear">
-                    <button>Buy Now</button>
-                </a>
-            </div>
+            {% endfor %}
 
         </div>
 
