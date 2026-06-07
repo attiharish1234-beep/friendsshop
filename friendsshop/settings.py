@@ -15,6 +15,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'cloudinary',
+    'cloudinary_storage',
+
     'products',
 ]
 
@@ -48,11 +52,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'friendsshop.wsgi.application'
 
+import dj_database_url
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.parse("postgresql://friendsshop_db_user:8woXtbwB5QcIPw7VySX39u7euAxchRPY@dpg-d8ikb148aovs738d8qr0-a/friendsshop_db")
 }
 
 LANGUAGE_CODE = 'en-us'
@@ -72,5 +75,14 @@ STATIC_ROOT=BASE_DIR/'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dpkde6nlf',
+    'API_KEY': '485657285842663',
+    'API_SECRET': '8sBCyLdKQlkk-vqQUYaA0PDRxQl',
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
