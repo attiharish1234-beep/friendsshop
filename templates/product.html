@@ -3,21 +3,68 @@
 <html>
 <head>
     <title>{{ title }}</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f5f5f5;
+            text-align:center;
+            margin:0;
+            padding:20px;
+        }
+
+        .container{
+            max-width:500px;
+            margin:auto;
+            background:white;
+            padding:20px;
+            border-radius:10px;
+            box-shadow:0 0 10px rgba(0,0,0,0.1);
+        }
+
+        img{
+            width:250px;
+            height:250px;
+            object-fit:cover;
+            border-radius:10px;
+        }
+
+        input, select, textarea{
+            width:90%;
+            padding:10px;
+            margin:10px 0;
+            border:1px solid #ccc;
+            border-radius:5px;
+        }
+
+        button{
+            background:#0d47a1;
+            color:white;
+            border:none;
+            padding:12px 25px;
+            border-radius:5px;
+            font-size:16px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#1565c0;
+        }
+    </style>
 </head>
 <body>
 
+<div class="container">
+
     <h1>{{ title }}</h1>
 
-    <img src="{% static image %}" width="300">
-
-    <br><br>
+    <img src="{% static image %}" alt="{{ title }}">
 
     <form action="/save-order/" method="post">
         {% csrf_token %}
 
-        <label>Select Size:</label>
         <select name="size" required>
-            <option value="">Choose Size</option>
+            <option value="">Select Size</option>
             <option>6</option>
             <option>7</option>
             <option>8</option>
@@ -25,27 +72,19 @@
             <option>10</option>
         </select>
 
-        <br><br>
-
         <input type="text" name="name" placeholder="Full Name" required>
-
-        <br><br>
 
         <textarea name="address" placeholder="Address" required></textarea>
 
-        <br><br>
-
         <input type="text" name="pincode" placeholder="PIN Code" required>
 
-        <br><br>
-
         <input type="text" name="phone" placeholder="Phone Number" required>
-
-        <br><br>
 
         <button type="submit">Proceed to Payment</button>
 
     </form>
+
+</div>
 
 </body>
 </html>
