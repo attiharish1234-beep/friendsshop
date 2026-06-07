@@ -16,7 +16,28 @@ def main():
             "forget to activate a virtual environment?"
         ) from exc
     execute_from_command_line(sys.argv)
+from django.shortcuts import render
 
+def home(request):
+    return render(request, 'home.html')
+
+def product(request):
+    product = request.GET.get("product")
+
+    if product == "sandals":
+        image = "images/sandals.jpg"
+        title = "Sports Sandals"
+    elif product == "footwear":
+        image = "images/footwear.jpg"
+        title = "Daily Wear Footwear"
+    else:
+        image = "images/slippers.jpg"
+        title = "Comfort Slippers"
+
+    return render(request, "product.html", {
+        "image": image,
+        "title": title
+    })
 
 if __name__ == '__main__':
     main()
