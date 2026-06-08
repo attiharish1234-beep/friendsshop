@@ -1,5 +1,9 @@
 from pathlib import Path
 import dj_database_url
+import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -59,34 +63,30 @@ DATABASES = {
     )
 }
 
-LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
-USE_I18N = True
-USE_TZ = True
-
 STATIC_URL = '/static/'
-
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
-
+STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+
 CLOUDINARY_STORAGE = {
-    'cloud_name': 'dpkde6nlf',
-    'api_key': '485657285842663',
-    'api_secret': '8sBCyLdkQIkk-vqQUYaA0PDRxQI',
+    'CLOUD_NAME': 'dpkde6n1f',   
+    'API_KEY': '485657285842663',
+    'API_SECRET': '8sBCyLdkQIkk-vqQUYaA0PDRxQI',
 }
 
-import cloudinary
-
 cloudinary.config(
-    cloud_name='dpkde6nlf',
+    cloud_name='dpkde6n1f',      
     api_key='485657285842663',
     api_secret='8sBCyLdkQIkk-vqQUYaA0PDRxQI',
     secure=True
 )
-DEFAULT_FILE_STORAGE ='cloudinary_storage.storage.MediaCloudinaryStorage'
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+LANGUAGE_CODE = 'en-us'
+TIME_ZONE = 'UTC'
+USE_I18N = True
+USE_TZ = True
