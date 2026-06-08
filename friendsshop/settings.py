@@ -1,4 +1,5 @@
 from pathlib import Path
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -52,19 +53,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'friendsshop.wsgi.application'
 
-import dj_database_url
-
 DATABASES = {
     'default': dj_database_url.parse(
-        "postgresql://friendsshop_db_user:8woXtbwB5QcIPw7VySX39u7euAxchRPY@dpg-d8ikb148aovs738d8qr0-a.singapore-postgres.render.com/friendsshop_db"
+        'postgresql://friendsshop_db_user:8woXtbwB5QcIPw7VySX39u7euAxchRPY@dpg-d8ikb148aovs738d8qr0-a.singapore-postgres.render.com/friendsshop_db'
     )
 }
+
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
 
 STATIC_URL = '/static/'
@@ -72,18 +69,24 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
-STATIC_ROOT=BASE_DIR/'staticfiles'
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dpkde6nlf',
-    'API_KEY': '485657285842663',
-    'API_SECRET': '8sBCyLdKQlkk-vqQUYaA0PDRxQl',
+    'cloud_name': 'dpkde6nlf',
+    'api_key': '485657285842663',
+    'api_secret': '8sBCyLdkQIkk-vqQUYaA0PDRxQI',
 }
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+import cloudinary
+
+cloudinary.config(
+    cloud_name='dpkde6nlf',
+    api_key='485657285842663',
+    api_secret='8sBCyLdkQIkk-vqQUYaA0PDRxQI',
+    secure=True
+)
+DEFAULT_FILE_STORAGE ='cloudinary_storage.storage.MediaCloudinaryStorage'
